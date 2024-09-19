@@ -1,5 +1,5 @@
 <template>
-  <div class="position-fixed w-100">
+  <div id="navBar" class="position-fixed w-100">
     <!-- Conteneur pour le numéro de téléphone -->
     <div class="d-flex justify-content-center bg-light text-center py-2">
       <span class="telTopBar font-weight-bold mx-3">Loris : <a class="telTopBar" href="tel:+330764191017">07 64 19 10 17</a></span>
@@ -46,16 +46,336 @@
     </div>
   </div>
 
+  <div class="sections">
+
   <div :class="clicked ? 'aPropos1' : 'aPropos2'" >
     <div class="d-flex flex-column justify-content-center align-items-center">
-      <h2 @click="toggleClicked" id="aProposTitle">À propos</h2>
-      <p v-show="clicked" id="aProposDesc" :class="clicked ? 'sectionTitleShow' : 'sectionTitle'">
-        SGA est une entreprise encrée depuis plusieurs années dans l’organisation de transport,
-        de la logistique et de l'affrètement. Nous sommes une équipe jeune et dynamique à
-        l'écoute des besoins de nos clients. Capable d'organiser tous types de transports sur le plan
-        multimodal, notre réactivité nous a permis de nous déployer au niveau international.
-      </p>
+      <h2 @click="toggleClicked" id="aProposTitle" class="display-4">À propos</h2>
+      <div v-if="clicked" id="aProposDesc" :class="clicked ? 'sectionTitleShow' : 'sectionTitle'">
+        <p>
+          <strong>SGA</strong> est une entreprise spécialisée dans <em>le transport de marchandises</em> sur palettes, assurant un service fiable et rapide pour répondre à vos besoins logistiques. Que vous ayez une seule palette ou des chargements plus importants, notre équipe dynamique et expérimentée s'engage à vous offrir une <em>solution de transport</em> sur mesure.
+        </p>
+        <p>
+          Grâce à notre expertise en <em>transport multimodal</em> (routier, maritime, aérien et ferroviaire), nous couvrons aussi bien les besoins nationaux qu'internationaux. Notre réseau de partenaires et notre réactivité nous permettent de gérer efficacement toutes les demandes, même urgentes, avec un souci constant de la satisfaction client.
+        </p>
+        <p>
+          Faites confiance à <strong>SGA</strong> pour assurer le <em>transport de vos palettes</em> et autres marchandises dans des conditions optimales de sécurité et de délais.
+        </p>
+        <img id="imgApropos" src="/img/impApropos.jpg" alt="transport">
+      </div>
     </div>
+  </div>
+
+  <div :class="clicked2 ? 'aPropos1' : 'aPropos3'" >
+    <div class="d-flex flex-column justify-content-center align-items-center">
+      <h2 @click="toggleClicked2" id="aProposTitle" class="display-4">Nos Services</h2>
+      <div v-if="clicked2" id="aProposDesc" :class="clicked2 ? 'sectionTitleShow' : 'sectionTitle'">
+
+        <div class="container py-5" id="services">
+          <div class="row text-center mb-4">
+            <div class="col">
+
+              <p class="lead">
+                Chez <strong>SGA</strong>, nous proposons une gamme complète de <em>services de transport de marchandises</em> adaptés à vos besoins. Que vous ayez des palettes ou des marchandises spécifiques, nous avons la solution parfaite.
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <!-- Transport de palettes -->
+            <div class="col-md-6 col-lg-4 mb-4">
+              <div class="card shadow h-100">
+                <div class="card-body">
+                  <h5 class="card-title">Transport de Palettes</h5>
+                  <p class="card-text">
+                    Notre <em>service de transport de palettes</em> est conçu pour assurer la sécurité et la rapidité de vos envois nationaux et internationaux, avec des options flexibles pour répondre à vos besoins.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Transport express -->
+            <div class="col-md-6 col-lg-4 mb-4">
+              <div class="card shadow h-100">
+                <div class="card-body">
+                  <h5 class="card-title">Transport Express</h5>
+                  <p class="card-text">
+                    Besoin d'une <em>livraison rapide</em> ? Notre service de <em>transport express</em> vous garantit une prise en charge immédiate et une livraison dans les plus brefs délais, où que vous soyez.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Logistique et gestion de fret -->
+            <div class="col-md-6 col-lg-4 mb-4">
+              <div class="card shadow h-100">
+                <div class="card-body">
+                  <h5 class="card-title">Logistique et Gestion de Fret</h5>
+                  <p class="card-text">
+                    En tant que spécialistes de la <em>logistique et de l'affrètement</em>, nous optimisons la gestion de vos flux de marchandises tout en respectant vos contraintes de temps et de budget.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Transport multimodal -->
+            <div class="col-md-6 col-lg-4 mb-4">
+              <div class="card shadow h-100">
+                <div class="card-body">
+                  <h5 class="card-title">Transport Multimodal</h5>
+                  <p class="card-text">
+                    Profitez de solutions flexibles grâce à notre <em>service de transport multimodal</em>, combinant transport routier, maritime, aérien et ferroviaire pour vos expéditions de marchandises à l'international.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Services personnalisés -->
+            <div class="col-md-6 col-lg-4 mb-4">
+              <div class="card shadow h-100">
+                <div class="card-body">
+                  <h5 class="card-title">Services Personnalisés</h5>
+                  <p class="card-text">
+                    Chaque besoin est unique. Nos <em>solutions de transport sur mesure</em> sont conçues en fonction de vos exigences spécifiques, garantissant des services adaptés à vos marchandises et destinations.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Suivi et tracking en temps réel -->
+            <div class="col-md-6 col-lg-4 mb-4">
+              <div class="card shadow h-100">
+                <div class="card-body">
+                  <h5 class="card-title">SAV de qualité</h5>
+                  <p class="card-text">
+                    Notre service après-vente (SAV) est à votre écoute pour résoudre rapidement vos demandes ou incidents après l’expédition de vos marchandises.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Conclusion -->
+            <div class="col-md-12 text-center mt-4">
+              <p class="lead">
+                Faites confiance à <strong>SGA</strong> pour vos besoins en <em>transport de marchandises</em>, que ce soit pour une palette ou un chargement complet. Notre expertise vous assure un service de qualité, en France et à l'international.
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+    <div :class="clicked3 ? 'aPropos1' : 'aPropos2'" >
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <h2 @click="toggleClicked3" id="aProposTitle" class="display-4">Temoignages</h2>
+        <div v-if="clicked3" id="aProposDesc" :class="clicked3 ? 'sectionTitleShow' : 'sectionTitle'">
+          <div class="container py-5" id="testimonials">
+            <div class="row text-center mb-4">
+              <div class="col">
+                <h2 class="display-4">Ce que disent nos clients</h2>
+                <p class="lead">Découvrez les avis de nos clients satisfaits par nos services de transport et de logistique.</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 mb-4">
+                <div class="card shadow h-100">
+                  <div class="card-body">
+                    <p class="card-text">
+                      <em>"Service impeccable ! Mon transport de palettes a été rapide et bien organisé. Je recommande vivement SGA."</em>
+                    </p>
+                    <footer class="blockquote-footer">Jean Dupont</footer>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="card shadow h-100">
+                  <div class="card-body">
+                    <p class="card-text">
+                      <em>"Transport international sans accroc, SGA a parfaitement géré la logistique de A à Z. Très professionnel."</em>
+                    </p>
+                    <footer class="blockquote-footer">Marie Leroy</footer>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="card shadow h-100">
+                  <div class="card-body">
+                    <p class="card-text">
+                      <em> "Nous avons fait appel à cette entreprise pour un transport de marchandises urgentes, et nous avons été impressionnés par leur réactivité. Non seulement nos palettes ont été livrées dans les temps, mais l'équipe a également été très professionnelle tout au long du processus. Le suivi client est remarquable, et nous nous sentons en sécurité en travaillant avec eux."</em>
+                    </p>
+                    <footer class="blockquote-footer">Karim Mohamed</footer>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div :class="clicked4 ? 'aPropos1' : 'aPropos2'" >
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <h2 @click="toggleClicked4" id="aProposTitle" class="display-4">F.A.Q</h2>
+        <div v-if="clicked4" id="aProposDesc" :class="clicked4 ? 'sectionTitleShow' : 'sectionTitle'">
+          <div class="container py-5" id="faq">
+            <div class="row text-center mb-4">
+              <div class="col">
+
+                <p class="lead">Retrouvez ici les réponses à vos questions fréquentes concernant nos services de transport de marchandises.</p>
+              </div>
+            </div>
+            <div class="accordion" id="faqAccordion">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Comment fonctionne le transport de palettes ?
+                  </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Nous assurons le transport de vos palettes en toute sécurité grâce à nos solutions de logistique fiables et rapides. Nos véhicules sont adaptés pour différents volumes de marchandises.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Quels sont les délais pour un transport express ?
+                  </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Les délais dépendent de la destination. En général, pour un transport express national, nous pouvons livrer dans les 24 à 48 heures. Pour les envois internationaux, le délai varie selon la distance.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Question 3 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Quelle est la capacité maximale de poids pour une palette ?
+                  </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    La capacité maximale dépend du type de transport et de la réglementation en vigueur. En général, une palette standard peut supporter jusqu'à 1 200 kg, mais cela peut varier selon les spécifications de la commande.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Question 4 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    Comment puis-je suivre mon expédition ?
+                  </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Vous pouvez suivre votre expédition grâce à notre système de suivi en ligne. Un numéro de suivi vous sera fourni une fois la commande expédiée, vous permettant de connaître son statut en temps réel.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Question 5 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFive">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                    Quels types de marchandises transportez-vous ?
+                  </button>
+                </h2>
+                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Nous transportons tous types de marchandises, y compris des produits fragiles, des palettes industrielles, des matériaux lourds et bien plus encore. Nous adaptons nos solutions logistiques en fonction de vos besoins spécifiques.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Question 6 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingSix">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                    Quelles sont les zones géographiques desservies ?
+                  </button>
+                </h2>
+                <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Nous desservons toute la France ainsi que de nombreuses destinations en Europe et à l'international. Nous pouvons également organiser des expéditions multimodales pour des destinations spécifiques.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Question 7 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingSeven">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                    Proposez-vous des services de transport sur mesure ?
+                  </button>
+                </h2>
+                <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Oui, nous proposons des services de transport personnalisés pour répondre à vos besoins spécifiques. Que ce soit pour des volumes particuliers, des délais serrés ou des destinations complexes, nous avons la solution adaptée.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Question 8 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingEight">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                    Comment se déroule la facturation de vos services ?
+                  </button>
+                </h2>
+                <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    La facturation est basée sur plusieurs critères, dont la distance, le volume et le type de marchandises. Nous offrons des tarifs transparents et détaillons chaque service dans notre devis pour éviter toute surprise.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Question 9 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingNine">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                    Proposez-vous des services d'emballage pour les expéditions ?
+                  </button>
+                </h2>
+                <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Oui, nous proposons des services d'emballage pour protéger vos marchandises pendant le transport. Cela inclut l'emballage de palettes, le filmage et d'autres solutions pour sécuriser les marchandises fragiles.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Question 10 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTen">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                    Quelles sont les conditions pour annuler ou modifier une expédition ?
+                  </button>
+                </h2>
+                <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Pour annuler ou modifier une expédition, vous devez nous en informer dans les plus brefs délais. Des frais peuvent s'appliquer en fonction du délai de prévenance et de l'avancée de l'expédition. Nous ferons de notre mieux pour répondre à vos besoins.
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+
   </div>
 </template>
 
@@ -64,6 +384,10 @@ export default {
   data() {
     return {
       clicked: false,
+      clicked2: false,
+      clicked3: false,
+      clicked4: false,
+
       form: {
         raisonSociale: '',
         nom: '',
@@ -111,7 +435,29 @@ export default {
   methods: {
     toggleClicked() {
       this.clicked = !this.clicked;
+      this.clicked2=false;
+      this.clicked3=false;
+      this.clicked4=false;
     },
+    toggleClicked2() {
+      this.clicked2 = !this.clicked2;
+      this.clicked=false;
+      this.clicked3=false;
+      this.clicked4=false;
+    },
+    toggleClicked3() {
+      this.clicked3 = !this.clicked3;
+      this.clicked2=false;
+      this.clicked=false;
+      this.clicked4=false;
+    },
+    toggleClicked4() {
+      this.clicked4 = !this.clicked4;
+      this.clicked2=false;
+      this.clicked=false;
+      this.clicked3=false;
+    },
+
     submitForm() {
       // Préparation des données du formulaire
       const formData = {
@@ -191,9 +537,13 @@ export default {
 </script>
 
 <style>
+*{
+  width: 100%;
+}
 /* Styles pour les barres et les boutons */
 .telTopBar,
 #demandeDevis {
+  width: 200px;
   text-decoration: none;
   color: #005595;
 }
@@ -215,6 +565,7 @@ export default {
 .logo {
   transition: ease-in 3s;
   margin-top: 150px;
+  width: 50%;
 }
 
 .fade-in {
@@ -233,32 +584,50 @@ export default {
 /* Section à propos avec transition */
 .aPropos2 {
   cursor: pointer;
-  position: absolute;
+
   width: 100%;
   padding: 20px;
-  margin-top: 80px;
+  margin-top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(90deg, #005595 0%, #005595 50%, rgba(255, 255, 255, 0) 60%);
-  transition: background 0.3s ease-in;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 12%, rgba(0,85,149,1) 25%, rgba(0,85,149,1) 75%, rgba(255,255,255,0) 88%);
+  transition: background 0.5s ease-out;
+
+}
+
+.aPropos3 {
+  cursor: pointer;
+
+  width: 100%;
+  padding: 20px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 12%, rgba(0,85,149,1) 25%, rgba(0,85,149,1) 75%, rgba(255,255,255,0) 88%);
+  transition: background 0.5s ease-out;
+
 }
 
 .aPropos1 {
   cursor: pointer;
-  position: absolute;
+
   width: 100%;
   padding: 20px;
-  margin-top: 80px;
+  margin-top: 10px;
+
   display: flex;
   justify-content: center;
   align-items: center;
   background: #005595;
-  transition: background 0.3s ease-in;
+  transition: background 0.5s ease-out;
+
 }
 
 #aProposTitle {
-  transition: color 0.3s ease-in;
+  text-align: center;
+  transition: color 0.5s ease-in;
 }
 
 #aProposTitle:hover {
@@ -274,4 +643,23 @@ export default {
   color: rgba(255, 255, 255, 0);
   transition: color 1s ease-in;
 }
+#aProposDesc{
+  text-align: center;
+}
+
+.sections{
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+
+
+}
+#imgApropos{
+  width: 30%;
+  border-radius: 10px;
+}
+#navBar{
+  z-index: 999;
+}
+
 </style>
