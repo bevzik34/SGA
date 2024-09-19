@@ -7,13 +7,13 @@
       <span class="telTopBar font-weight-bold mx-3">Arnaud : <a class="telTopBar" href="tel:+330782457041">07 82 45 70 41</a></span>
     </div>
 
-    <!-- Button to trigger modal -->
+    <!-- bouton de demande de devis -->
     <div class="d-flex justify-content-center bg-light text-center py-2">
       <a id="demandeDevis" href="#" data-bs-toggle="modal" data-bs-target="#devisModal">Demande de devis</a>
     </div>
   </div>
 
-  <!-- Modal -->
+  <!-- Modal de demande de devis-->
   <div class="modal fade" id="devisModal" tabindex="-1" aria-labelledby="devisModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -383,10 +383,8 @@
 export default {
   data() {
     return {
-      clicked: false,
-      clicked2: false,
-      clicked3: false,
-      clicked4: false,
+
+      //creation du formulaire
 
       form: {
         raisonSociale: '',
@@ -432,6 +430,13 @@ export default {
       }
     };
   },
+
+  //gestion des etats des sections
+  clicked: false,
+  clicked2: false,
+  clicked3: false,
+  clicked4: false,
+
   methods: {
     toggleClicked() {
       this.clicked = !this.clicked;
