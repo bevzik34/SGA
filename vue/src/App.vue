@@ -1,4 +1,8 @@
 <template>
+  <video autoplay muted loop class="video-content">
+    <source src="/backgroundServices.mp4" type="video/mp4">
+    Votre navigateur ne supporte pas la balise vidéo.
+  </video>
   <div id="navBar" class="position-fixed w-100">
     <!-- Conteneur pour le numéro de téléphone -->
     <div class="d-flex justify-content-center bg-light text-center py-2">
@@ -8,7 +12,7 @@
     </div>
 
     <!-- bouton de demande de devis -->
-    <div class="d-flex justify-content-center bg-light text-center py-2">
+    <div id="navBarBackground" class="d-flex justify-content-center  text-center py-2">
       <a id="demandeDevis" href="#" data-bs-toggle="modal" data-bs-target="#devisModal">Demande de devis</a>
     </div>
   </div>
@@ -48,6 +52,105 @@
 
   <div class="sections">
 
+    <div :class="clicked2 ? 'aPropos1' : 'aPropos3'" >
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <h2 @click="toggleClicked2" id="aProposTitle" class="display-4">Nos Services</h2>
+        <div v-if="clicked2" id="aProposDesc" :class="clicked2 ? 'sectionTitleShow' : 'sectionTitle'">
+
+          <div class="container py-5" id="services">
+            <div class="row text-center mb-4">
+              <div class="col">
+
+                <p class="lead">
+                  Chez <strong>SGA</strong>, nous proposons une gamme complète de <em>services de transport de marchandises</em> adaptés à vos besoins. Que vous ayez des palettes ou des marchandises spécifiques, nous avons la solution parfaite.
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <!-- Transport de palettes -->
+              <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card shadow h-100">
+                  <div class="card-body">
+                    <h5 class="card-title">Transport de Palettes</h5>
+                    <p class="card-text">
+                      Notre <em>service de transport de palettes</em> est conçu pour assurer la sécurité et la rapidité de vos envois nationaux et internationaux, avec des options flexibles pour répondre à vos besoins.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Transport express -->
+              <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card shadow h-100">
+                  <div class="card-body">
+                    <h5 class="card-title">Transport Express</h5>
+                    <p class="card-text">
+                      Besoin d'une <em>livraison rapide</em> ? Notre service de <em>transport express</em> vous garantit une prise en charge immédiate et une livraison dans les plus brefs délais, où que vous soyez.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Logistique et gestion de fret -->
+              <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card shadow h-100">
+                  <div class="card-body">
+                    <h5 class="card-title">Logistique et Gestion de Fret</h5>
+                    <p class="card-text">
+                      En tant que spécialistes de la <em>logistique et de l'affrètement</em>, nous optimisons la gestion de vos flux de marchandises tout en respectant vos contraintes de temps et de budget.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Transport multimodal -->
+              <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card shadow h-100">
+                  <div class="card-body">
+                    <h5 class="card-title">Transport Multimodal</h5>
+                    <p class="card-text">
+                      Profitez de solutions flexibles grâce à notre <em>service de transport multimodal</em>, combinant transport routier, maritime, aérien et ferroviaire pour vos expéditions de marchandises à l'international.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Services personnalisés -->
+              <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card shadow h-100">
+                  <div class="card-body">
+                    <h5 class="card-title">Services Personnalisés</h5>
+                    <p class="card-text">
+                      Chaque besoin est unique. Nos <em>solutions de transport sur mesure</em> sont conçues en fonction de vos exigences spécifiques, garantissant des services adaptés à vos marchandises et destinations.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Suivi et tracking en temps réel -->
+              <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card shadow h-100">
+                  <div class="card-body">
+                    <h5 class="card-title">SAV de qualité</h5>
+                    <p class="card-text">
+                      Notre service après-vente (SAV) est à votre écoute pour résoudre rapidement vos demandes ou incidents après l’expédition de vos marchandises.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Conclusion -->
+              <div class="col-md-12 text-center mt-4">
+                <p class="lead">
+                  Faites confiance à <strong>SGA</strong> pour vos besoins en <em>transport de marchandises</em>, que ce soit pour une palette ou un chargement complet. Notre expertise vous assure un service de qualité, en France et à l'international.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   <div :class="clicked ? 'aPropos1' : 'aPropos2'" >
     <div class="d-flex flex-column justify-content-center align-items-center">
       <h2 @click="toggleClicked" id="aProposTitle" class="display-4">À propos</h2>
@@ -61,112 +164,12 @@
         <p>
           Faites confiance à <strong>SGA</strong> pour assurer le <em>transport de vos palettes</em> et autres marchandises dans des conditions optimales de sécurité et de délais.
         </p>
-        <img id="imgApropos" src="/img/impApropos.jpg" alt="transport">
-      </div>
-    </div>
-  </div>
-
-  <div :class="clicked2 ? 'aPropos1' : 'aPropos3'" >
-    <div class="d-flex flex-column justify-content-center align-items-center">
-      <h2 @click="toggleClicked2" id="aProposTitle" class="display-4">Nos Services</h2>
-      <div v-if="clicked2" id="aProposDesc" :class="clicked2 ? 'sectionTitleShow' : 'sectionTitle'">
-
-        <div class="container py-5" id="services">
-          <div class="row text-center mb-4">
-            <div class="col">
-
-              <p class="lead">
-                Chez <strong>SGA</strong>, nous proposons une gamme complète de <em>services de transport de marchandises</em> adaptés à vos besoins. Que vous ayez des palettes ou des marchandises spécifiques, nous avons la solution parfaite.
-              </p>
-            </div>
-          </div>
-          <div class="row">
-            <!-- Transport de palettes -->
-            <div class="col-md-6 col-lg-4 mb-4">
-              <div class="card shadow h-100">
-                <div class="card-body">
-                  <h5 class="card-title">Transport de Palettes</h5>
-                  <p class="card-text">
-                    Notre <em>service de transport de palettes</em> est conçu pour assurer la sécurité et la rapidité de vos envois nationaux et internationaux, avec des options flexibles pour répondre à vos besoins.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Transport express -->
-            <div class="col-md-6 col-lg-4 mb-4">
-              <div class="card shadow h-100">
-                <div class="card-body">
-                  <h5 class="card-title">Transport Express</h5>
-                  <p class="card-text">
-                    Besoin d'une <em>livraison rapide</em> ? Notre service de <em>transport express</em> vous garantit une prise en charge immédiate et une livraison dans les plus brefs délais, où que vous soyez.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Logistique et gestion de fret -->
-            <div class="col-md-6 col-lg-4 mb-4">
-              <div class="card shadow h-100">
-                <div class="card-body">
-                  <h5 class="card-title">Logistique et Gestion de Fret</h5>
-                  <p class="card-text">
-                    En tant que spécialistes de la <em>logistique et de l'affrètement</em>, nous optimisons la gestion de vos flux de marchandises tout en respectant vos contraintes de temps et de budget.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Transport multimodal -->
-            <div class="col-md-6 col-lg-4 mb-4">
-              <div class="card shadow h-100">
-                <div class="card-body">
-                  <h5 class="card-title">Transport Multimodal</h5>
-                  <p class="card-text">
-                    Profitez de solutions flexibles grâce à notre <em>service de transport multimodal</em>, combinant transport routier, maritime, aérien et ferroviaire pour vos expéditions de marchandises à l'international.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Services personnalisés -->
-            <div class="col-md-6 col-lg-4 mb-4">
-              <div class="card shadow h-100">
-                <div class="card-body">
-                  <h5 class="card-title">Services Personnalisés</h5>
-                  <p class="card-text">
-                    Chaque besoin est unique. Nos <em>solutions de transport sur mesure</em> sont conçues en fonction de vos exigences spécifiques, garantissant des services adaptés à vos marchandises et destinations.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Suivi et tracking en temps réel -->
-            <div class="col-md-6 col-lg-4 mb-4">
-              <div class="card shadow h-100">
-                <div class="card-body">
-                  <h5 class="card-title">SAV de qualité</h5>
-                  <p class="card-text">
-                    Notre service après-vente (SAV) est à votre écoute pour résoudre rapidement vos demandes ou incidents après l’expédition de vos marchandises.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Conclusion -->
-            <div class="col-md-12 text-center mt-4">
-              <p class="lead">
-                Faites confiance à <strong>SGA</strong> pour vos besoins en <em>transport de marchandises</em>, que ce soit pour une palette ou un chargement complet. Notre expertise vous assure un service de qualité, en France et à l'international.
-              </p>
-            </div>
-          </div>
-        </div>
-
-
 
       </div>
     </div>
   </div>
+
+
 
 
     <div :class="clicked3 ? 'aPropos1' : 'aPropos2'" >
@@ -383,8 +386,11 @@
 export default {
   data() {
     return {
-
-      //creation du formulaire
+      //gestion des etats des sections
+      clicked: false,
+      clicked2: true,
+      clicked3: false,
+      clicked4: false,
 
       form: {
         raisonSociale: '',
@@ -430,13 +436,6 @@ export default {
       }
     };
   },
-
-  //gestion des etats des sections
-  clicked: false,
-  clicked2: false,
-  clicked3: false,
-  clicked4: false,
-
   methods: {
     toggleClicked() {
       this.clicked = !this.clicked;
@@ -551,6 +550,7 @@ export default {
   width: 200px;
   text-decoration: none;
   color: #005595;
+
 }
 
 .telTopBar:hover,
@@ -568,9 +568,11 @@ export default {
 
 /* Logo fade-in */
 .logo {
+  background-color: rgba(255, 255, 255, 0.54);
   transition: ease-in 3s;
   margin-top: 150px;
   width: 50%;
+  border-radius: 10px;
 }
 
 .fade-in {
@@ -625,7 +627,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #005595;
+  background: rgb(0, 85, 149);
   transition: background 0.5s ease-out;
 
 }
@@ -665,6 +667,23 @@ export default {
 }
 #navBar{
   z-index: 999;
+
+}
+
+.video-content {
+  height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+#navBarBackground {
+
+  background : linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 27%);
 }
 
 </style>
