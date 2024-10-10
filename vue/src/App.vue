@@ -8,19 +8,47 @@
     <div class="d-flex justify-content-center bg-light text-center py-2">
       <span class="telTopBar font-weight-bold mx-3">Loris : <a class="telTopBar" href="tel:+330764191017">07 64 19 10 17</a></span>
       <span class="telTopBar font-weight-bold mx-3">Ali : <a class="telTopBar" href="tel:+330661771764">06 61 77 17 64</a></span>
-      <span class="telTopBar font-weight-bold mx-3">Arnaud : <a class="telTopBar" href="tel:+330782457041">07 82 45 70 41</a></span>
     </div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
 
-    <!-- bouton de demande de devis -->
-    <div id="navBarBackground" class="d-flex justify-content-center  text-center py-2">
-      <a id="demandeDevis" href="#" data-bs-toggle="modal" data-bs-target="#devisModal">Demande de devis</a>
-    </div>
+        <!-- bouton de demande de devis -->
+        <div id="navBarBackground" class="d-flex justify-content-around text-center ">
+          <a class="navbar-brand logo" href="#"><img src="/img/SVGLogo.svg" alt="Logo de l'entreprise"></a>
+          <a id="demandeDevis" class="align-middle" href="#" data-bs-toggle="modal" data-bs-target="#devisModal">Demande de devis</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a  class="nav-link " aria-current="page" href="#services">Services</a>
+            </li>
+            <li class="nav-item">
+              <a  class="nav-link" href="#ancreApropos">À propos</a>
+            </li>
+            <li class="nav-item">
+              <a  class="nav-link " href="#notreEquipe">Notre équipe</a>
+            </li>
+            <li class="nav-item">
+              <a  class="nav-link" href="#temoignages">Temoignages</a>
+            </li>
+            <li class="nav-item" >
+              <a  class="nav-link " href="#faq">F.A.Q</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
   </div>
 
   <!-- Modal de demande de devis-->
   <div class="modal fade" id="devisModal" tabindex="-1" aria-labelledby="devisModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content" >
         <div class="modal-header">
           <h5 class="modal-title" id="devisModalLabel">Demande de Devis</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -44,24 +72,22 @@
     </div>
   </div>
 
-  <div class="content d-flex justify-content-center">
-    <div class="logo fade-in">
-      <img src="/img/SVGLogo.svg" alt="Logo de l'entreprise">
-    </div>
+  <div class="content d-flex justify-content-center" id="services">
+
   </div>
 
-  <div class="sections">
+  <div class="sections" >
 
     <div :class="clicked2 ? 'aPropos1' : 'aPropos3'" >
       <div class="d-flex flex-column justify-content-center align-items-center">
         <h2 @click="toggleClicked2" id="aProposTitle" class="display-4">Nos Services</h2>
         <div v-if="clicked2" id="aProposDesc" :class="clicked2 ? 'sectionTitleShow' : 'sectionTitle'">
 
-          <div class="container py-5" id="services">
+          <div class="container py-5" >
             <div class="row text-center mb-4">
               <div class="col">
 
-                <p class="lead">
+                <p class="lead" >
                   Chez <strong>SGA</strong>, nous proposons une gamme complète de <em>services de transport de marchandises</em> adaptés à vos besoins. Que vous ayez des palettes ou des marchandises spécifiques, nous avons la solution parfaite.
                 </p>
               </div>
@@ -69,7 +95,19 @@
             <div class="row">
               <!-- Transport de palettes -->
               <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card shadow h-100">
+                <div class="card shadow h-100"
+                     @mouseover="handleMouseOver('palette')"
+                     @mouseleave="handleMouseLeave('palette')"
+                     @click="toggleImageOnMobile('palette')"
+                >
+
+                  <!-- Image qui se cache au survol -->
+                  <img
+                      :class="{ 'fade-out-img': hoveredCard === 'palette', 'fade-in-img': hoveredCard !== 'palette' }"
+                      src="/img/palette.jpg"
+                      alt="Transport de Palettes"
+                      class="card-img-top overlay-img"
+                  />
                   <div class="card-body">
                     <h5 class="card-title">Transport de Palettes</h5>
                     <p class="card-text">
@@ -81,7 +119,18 @@
 
               <!-- Transport express -->
               <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card shadow h-100">
+                <div class="card shadow h-100"
+                     @mouseover="handleMouseOver('express')"
+                     @mouseleave="handleMouseLeave('express')"
+                     @click="toggleImageOnMobile('express')"
+                >
+                  <!-- Image qui se cache au survol -->
+                  <img
+                      :class="{ 'fade-out-img': hoveredCard === 'express', 'fade-in-img': hoveredCard !== 'express' }"
+                      src="/img/express.jpg"
+                      alt="Transport express"
+                      class="card-img-top overlay-img"
+                  />
                   <div class="card-body">
                     <h5 class="card-title">Transport Express</h5>
                     <p class="card-text">
@@ -93,7 +142,18 @@
 
               <!-- Logistique et gestion de fret -->
               <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card shadow h-100">
+                <div class="card shadow h-100"
+                     @mouseover="handleMouseOver('logistique')"
+                     @mouseleave="handleMouseLeave('logistique')"
+                     @click="toggleImageOnMobile('logistique')"
+                >
+                  <!-- Image qui se cache au survol -->
+                  <img
+                      :class="{ 'fade-out-img': hoveredCard === 'logistique', 'fade-in-img': hoveredCard !== 'logistique' }"
+                      src="/img/logistique.jpg"
+                      alt="logistique et gestion de fret"
+                      class="card-img-top overlay-img"
+                  />
                   <div class="card-body">
                     <h5 class="card-title">Logistique et Gestion de Fret</h5>
                     <p class="card-text">
@@ -105,7 +165,17 @@
 
               <!-- Transport multimodal -->
               <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card shadow h-100">
+                <div class="card shadow h-100"
+                     @mouseover="handleMouseOver('multimodal')"
+                     @mouseleave="handleMouseLeave('multimodal')"
+                     @click="toggleImageOnMobile('multimodal')"
+                >
+                  <img
+                      :class="{ 'fade-out-img': hoveredCard === 'multimodal', 'fade-in-img': hoveredCard !== 'multimodal' }"
+                      src="/img/multimodal.jpg"
+                      alt="Transport Multimodal"
+                      class="card-img-top overlay-img"
+                  />
                   <div class="card-body">
                     <h5 class="card-title">Transport Multimodal</h5>
                     <p class="card-text">
@@ -117,7 +187,17 @@
 
               <!-- Services personnalisés -->
               <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card shadow h-100">
+                <div class="card shadow h-100"
+                     @mouseover="handleMouseOver('personnalise')"
+                     @mouseleave="handleMouseLeave('personnalise')"
+                     @click="toggleImageOnMobile('personnalise')"
+                >
+                  <img
+                      :class="{ 'fade-out-img': hoveredCard === 'personnalise', 'fade-in-img': hoveredCard !== 'personnalise' }"
+                      src="/img/personnalise.jpg"
+                      alt="Services Personnalisés"
+                      class="card-img-top overlay-img"
+                  />
                   <div class="card-body">
                     <h5 class="card-title">Services Personnalisés</h5>
                     <p class="card-text">
@@ -129,7 +209,16 @@
 
               <!-- Suivi et tracking en temps réel -->
               <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card shadow h-100">
+                <div class="card shadow h-100"
+                     @mouseover="handleMouseOver('sav')"
+                     @mouseleave="handleMouseLeave('sav')"
+                     @click="toggleImageOnMobile('sav')">
+                  <img
+                      :class="{ 'fade-out-img': hoveredCard === 'sav', 'fade-in-img': hoveredCard !== 'sav' }"
+                      src="/img/sav.jpg"
+                      alt="SAV de qualité"
+                      class="card-img-top overlay-img"
+                  />
                   <div class="card-body">
                     <h5 class="card-title">SAV de qualité</h5>
                     <p class="card-text">
@@ -140,7 +229,7 @@
               </div>
 
               <!-- Conclusion -->
-              <div class="col-md-12 text-center mt-4">
+              <div id="ancreApropos" class="col-md-12 text-center mt-4">
                 <p class="lead">
                   Faites confiance à <strong>SGA</strong> pour vos besoins en <em>transport de marchandises</em>, que ce soit pour une palette ou un chargement complet. Notre expertise vous assure un service de qualité, en France et à l'international.
                 </p>
@@ -155,19 +244,65 @@
     <div class="d-flex flex-column justify-content-center align-items-center">
       <h2 @click="toggleClicked" id="aProposTitle" class="display-4">À propos</h2>
       <div v-if="clicked" id="aProposDesc" :class="clicked ? 'sectionTitleShow' : 'sectionTitle'">
-        <p>
+        <p >
           <strong>SGA</strong> est une entreprise spécialisée dans <em>le transport de marchandises</em> sur palettes, assurant un service fiable et rapide pour répondre à vos besoins logistiques. Que vous ayez une seule palette ou des chargements plus importants, notre équipe dynamique et expérimentée s'engage à vous offrir une <em>solution de transport</em> sur mesure.
         </p>
-        <p>
+        <p id="notreEquipe">
           Grâce à notre expertise en <em>transport multimodal</em> (routier, maritime, aérien et ferroviaire), nous couvrons aussi bien les besoins nationaux qu'internationaux. Notre réseau de partenaires et notre réactivité nous permettent de gérer efficacement toutes les demandes, même urgentes, avec un souci constant de la satisfaction client.
         </p>
-        <p>
+        <p >
           Faites confiance à <strong>SGA</strong> pour assurer le <em>transport de vos palettes</em> et autres marchandises dans des conditions optimales de sécurité et de délais.
         </p>
 
       </div>
     </div>
   </div>
+
+    <div :class="clicked5 ? 'aPropos1' : 'aPropos2'" >
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <h2 @click="toggleClicked5" id="aProposTitle" class="display-4">Notre équipe</h2>
+        <div v-if="clicked5" id="aProposDesc" :class="clicked5 ? 'sectionTitleShow' : 'sectionTitle'">
+          <section class="py-5" >
+            <div class="container">
+              <div class="row text-center mb-4">
+                <div class="col">
+                  <p class="lead">Rencontrez les experts qui dirigent notre entreprise et assurent un service de qualité.</p>
+                </div>
+              </div>
+              <div class="row">
+                <!-- Loris Navarro - Dirigeant -->
+                <div class="col-md-6 text-center">
+                  <div class="card border-0 shadow-sm">
+                    <img src="" class="card-img-top rounded-circle mx-auto mt-3" alt="Loris Navarro" style="width: 150px; height: 150px;">
+                    <div class="card-body">
+                      <h5 class="card-title">Loris Navarro</h5>
+                      <p class="card-text">Dirigeant</p>
+                      <p>Loris Navarro, fort de plusieurs années d'expérience dans le secteur, assure la direction de notre entreprise avec une vision stratégique claire et une passion pour le transport et la logistique. Son leadership garantit la croissance continue et l'excellence de nos services.</p>
+                      <a href="mailto:loris@sga-groupe.fr" class="btn btn-primary">Contactez Loris</a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Ali Elaoufi - Affréteur -->
+                <div class="col-md-6 text-center">
+                  <div class="card border-0 shadow-sm">
+                    <img src="" class="card-img-top rounded-circle mx-auto mt-3" alt="Ali Elaoufi" style="width: 150px; height: 150px;">
+                    <div class="card-body">
+                      <h5 class="card-title">Ali Elaoufi</h5>
+                      <p  class="card-text">Affréteur</p>
+                      <p >Ali Elaoufi, expert en affrètement, coordonne avec soin l'organisation de vos transports. Grâce à sa réactivité et sa connaissance approfondie du secteur, il optimise chaque envoi, garantissant des solutions logistiques efficaces et adaptées à vos besoins.</p>
+                      <a id="temoignages" href="mailto:ali@sga-groupe.fr" class="btn btn-primary">Contactez Ali</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+        </div>
+      </div>
+    </div>
 
 
 
@@ -176,7 +311,7 @@
       <div class="d-flex flex-column justify-content-center align-items-center">
         <h2 @click="toggleClicked3" id="aProposTitle" class="display-4">Temoignages</h2>
         <div v-if="clicked3" id="aProposDesc" :class="clicked3 ? 'sectionTitleShow' : 'sectionTitle'">
-          <div class="container py-5" id="testimonials">
+          <div class="container py-5" id="temoignages">
             <div class="row text-center mb-4">
               <div class="col">
                 <h2 class="display-4">Ce que disent nos clients</h2>
@@ -210,7 +345,7 @@
                     <p class="card-text">
                       <em> "Nous avons fait appel à cette entreprise pour un transport de marchandises urgentes, et nous avons été impressionnés par leur réactivité. Non seulement nos palettes ont été livrées dans les temps, mais l'équipe a également été très professionnelle tout au long du processus. Le suivi client est remarquable, et nous nous sentons en sécurité en travaillant avec eux."</em>
                     </p>
-                    <footer class="blockquote-footer">Karim Mohamed</footer>
+                    <footer id="faq" class="blockquote-footer">Karim Mohamed</footer>
                   </div>
                 </div>
               </div>
@@ -221,11 +356,12 @@
       </div>
     </div>
 
+
     <div :class="clicked4 ? 'aPropos1' : 'aPropos2'" >
       <div class="d-flex flex-column justify-content-center align-items-center">
         <h2 @click="toggleClicked4" id="aProposTitle" class="display-4">F.A.Q</h2>
         <div v-if="clicked4" id="aProposDesc" :class="clicked4 ? 'sectionTitleShow' : 'sectionTitle'">
-          <div class="container py-5" id="faq">
+          <div class="container py-5" >
             <div class="row text-center mb-4">
               <div class="col">
 
@@ -380,17 +516,49 @@
 
 
   </div>
+  <footer class="bg-dark text-white py-4">
+    <div class="container">
+      <div class="row">
+
+
+        <!-- Section 3: Contact -->
+        <div class="col-md-4">
+          <h5>Contact</h5>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-map-marker-alt"></i> 115 rue Merlot 34130 Mauguio</li>
+            <li><i class="fas fa-phone"></i> 07 64 19 10 17</li>
+            <li><i class="fas fa-envelope"></i> loris@sga-groupe.fr</li>
+          </ul>
+        </div>
+
+        <div class="row ">
+          <div class="col text-center">
+            <p class="small">&copy; 2024 SGA - Tous droits réservés.</p>
+          </div>
+        </div>
+      </div>
+
+
+
+
+    </div>
+  </footer>
+
 </template>
 
 <script>
 export default {
   data() {
     return {
-      //gestion des etats des sections
-      clicked: false,
+      // Gestion de l'état du survol
+      hoveredCard: null, // Gère l'état pour savoir quelle carte est survolée ou cliquée
+
+      // Gestion des etats des sections
+      clicked: true,
       clicked2: true,
-      clicked3: false,
-      clicked4: false,
+      clicked3: true,
+      clicked4: true,
+      clicked5: true,
 
       form: {
         raisonSociale: '',
@@ -437,29 +605,60 @@ export default {
     };
   },
   methods: {
+
+    handleMouseOver(card) {
+      if (!this.isMobile()) {
+        this.hoveredCard = card;
+      }
+    },
+    handleMouseLeave(card) {
+      if (!this.isMobile()) {
+        this.hoveredCard = null;
+      }
+    },
+    toggleImageOnMobile(card) {
+      if (this.isMobile()) {
+        this.hoveredCard = this.hoveredCard === card ? null : card;
+      }
+    },
+    isMobile() {
+      return window.innerWidth <= 768; // Définit un seuil pour mobile
+    },
+
     toggleClicked() {
       this.clicked = !this.clicked;
       this.clicked2=false;
       this.clicked3=false;
       this.clicked4=false;
+      this.clicked5=false;
     },
     toggleClicked2() {
       this.clicked2 = !this.clicked2;
       this.clicked=false;
       this.clicked3=false;
       this.clicked4=false;
+      this.clicked5=false;
     },
     toggleClicked3() {
       this.clicked3 = !this.clicked3;
       this.clicked2=false;
       this.clicked=false;
       this.clicked4=false;
+      this.clicked5=false;
     },
     toggleClicked4() {
       this.clicked4 = !this.clicked4;
       this.clicked2=false;
       this.clicked=false;
       this.clicked3=false;
+      this.clicked5=false;
+    },
+    toggleClicked5() {
+      this.clicked5 = !this.clicked5;
+      this.clicked2=false;
+      this.clicked=false;
+      this.clicked3=false;
+      this.clicked4=false;
     },
 
     submitForm() {
@@ -544,6 +743,33 @@ export default {
 *{
   width: 100%;
 }
+
+/* Image de la carte */
+.overlay-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Pour s'assurer que l'image recouvre la div */
+  z-index: 3; /* Positionne l'image au-dessus du texte */
+  transition: opacity 0.5s ease-in-out; /* Transition pour le fondu */
+}
+
+/* Texte de la carte */
+.card-body {
+  z-index: 2; /* Positionne le texte au-dessus de l'image */
+  position: relative;
+}
+
+/* Fondu au survol */
+.fade-in-img {
+  opacity: 1;
+}
+
+.fade-out-img {
+  opacity: 0;
+}
 /* Styles pour les barres et les boutons */
 .telTopBar,
 #demandeDevis {
@@ -559,8 +785,11 @@ export default {
 }
 
 #demandeDevis {
-  background: #005595;
+margin-top: 15px;
+  margin-bottom: 15px;
   padding: 10px;
+  background: #005595;
+  text-align: center;
   border-radius: 10px;
   color: white;
   transition: linear 0.3s;
@@ -568,15 +797,26 @@ export default {
 
 /* Logo fade-in */
 .logo {
-  background-color: rgba(255, 255, 255, 0.54);
+  background-color: rgb(248 249 250);
   transition: ease-in 3s;
-  margin-top: 150px;
-  width: 50%;
+  width: 30%;
   border-radius: 10px;
 }
 
 .fade-in {
   animation: fadeIn 3s ease-in-out;
+}
+@media (max-width: 991px) {
+  .sections {
+    margin-top: 180px !important;
+    /* Vous pouvez ajouter d'autres propriétés ici selon vos besoins */
+  }
+}
+@media (min-width: 369px) and (max-width: 920px) {
+  .sections {
+    margin-top: 160px !important;
+    /* Vous pouvez ajouter d'autres propriétés ici selon vos besoins */
+  }
 }
 
 @keyframes fadeIn {
@@ -617,6 +857,7 @@ export default {
 
 }
 
+
 .aPropos1 {
   cursor: pointer;
 
@@ -627,7 +868,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgb(0, 85, 149);
+  background: rgba(0, 85, 149, 0.84);
   transition: background 0.5s ease-out;
 
 }
@@ -635,11 +876,10 @@ export default {
 #aProposTitle {
   text-align: center;
   transition: color 0.5s ease-in;
-}
-
-#aProposTitle:hover {
   color: white;
 }
+
+
 
 .sectionTitleShow {
   color: white;
@@ -655,7 +895,7 @@ export default {
 }
 
 .sections{
-  margin-top: 80px;
+  margin-top: 120px;
   display: flex;
   flex-direction: column;
 
@@ -683,7 +923,7 @@ export default {
 }
 #navBarBackground {
 
-  background : linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 27%);
+background-color: rgb(248 249 250);
 }
 
 </style>
