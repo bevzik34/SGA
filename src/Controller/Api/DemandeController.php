@@ -13,11 +13,14 @@ use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use DateTime;
+
 
 class DemandeController extends AbstractController
 {
     /**
      * @throws TransportExceptionInterface
+     * @throws \Exception
      */
     #[Route('/api/devis', name: 'api_create_demande', methods: ['POST'])]
     public function createDemande(Request $request, EntityManagerInterface $entityManager, MailerInterface $mailer): JsonResponse
@@ -52,6 +55,16 @@ class DemandeController extends AbstractController
         $demande->setPoid($data['poid']);
         $demande->setTypeMarchandise($data['typeMarchandise'] ?? null);
         $demande->setCommentaire($data['commentaire'] ?? null);
+        $demande->setDateDepart(new DateTime($data['dateDepart']));
+        $demande->setDateArrivee(new DateTime($data['dateArrivee']));
+
+        // Convertir les dates en objets DateTime
+        $dateDepart = new DateTime($data['dateDepart']);
+        $dateArrivee = new DateTime($data['dateArrivee']);
+
+        // Format personnalisé pour l'affichage de la date et de l'heure
+        $formattedDateDepart = $dateDepart->format('d/m/Y H:i'); // Exemple : 10/10/2024 14:00
+        $formattedDateArrivee = $dateArrivee->format('d/m/Y H:i');
 
         // Construire le contenu HTML de l'email
         $emailContent = '
@@ -76,6 +89,8 @@ class DemandeController extends AbstractController
 <p><strong>Largeur :</strong> ' . htmlspecialchars($data['largeur']) . ' m</p>
 <p><strong>Hauteur :</strong> ' . htmlspecialchars($data['hauteur']) . ' m</p>
 <p><strong>Poids :</strong> ' . htmlspecialchars($data['poid']) . ' kg</p>
+<p><strong>Date Depart :</strong> ' . htmlspecialchars($formattedDateDepart) . ' </p>
+<p><strong>Date Arrivée :</strong> ' . htmlspecialchars($formattedDateArrivee) . ' </p>
 <p><strong>Type de Marchandise :</strong> ' . htmlspecialchars($data['typeMarchandise'] ?? 'Non précisé') . '</p>
 <p><strong>Commentaire :</strong> ' . nl2br(htmlspecialchars($data['commentaire'] ?? 'Aucun')) . '</p>
 ';

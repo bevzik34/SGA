@@ -578,6 +578,8 @@ export default {
         largeur: '',
         hauteur: '',
         poid: '',
+        dateDepart: '',
+        dateArrivee:'',
         typeMarchandise: '',
         commentaire: ''
       },
@@ -599,6 +601,8 @@ export default {
         largeur: { label: 'Largeur', type: 'number', required: true },
         hauteur: { label: 'Hauteur', type: 'number', required: true },
         poid: { label: 'Poids', type: 'number', required: true },
+        dateDepart: { label: 'Date de départ', type: 'datetime-local', required: true },
+        dateArrivee: { label: 'Date d\'arrivée', type: 'datetime-local', required: true },
         typeMarchandise: { label: 'Type de marchandise', type: 'text', required: false },
         commentaire: { label: 'Commentaire', isTextArea: true, required: false }
       }
@@ -681,6 +685,8 @@ export default {
         largeur: this.form.largeur,
         hauteur: this.form.hauteur,
         poid: this.form.poid,
+        dateDepart:this.form.dateDepart,
+        dateArrivee:this.form.dateArrivee,
         typeMarchandise: this.form.typeMarchandise,
         commentaire: this.form.commentaire
       };

@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\DemandeRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: DemandeRepository::class)]
@@ -71,6 +72,12 @@ class Demande
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $commentaire = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $dateDepart = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $dateArrivee = null;
 
     public function getId(): ?int
     {
@@ -301,6 +308,30 @@ class Demande
     public function setCommentaire(?string $commentaire): static
     {
         $this->commentaire = $commentaire;
+
+        return $this;
+    }
+
+    public function getDateDepart(): ?\DateTimeInterface
+    {
+        return $this->dateDepart;
+    }
+
+    public function setDateDepart(\DateTimeInterface $dateDepart): static
+    {
+        $this->dateDepart = $dateDepart;
+
+        return $this;
+    }
+
+    public function getDateArrivee(): ?\DateTimeInterface
+    {
+        return $this->dateArrivee;
+    }
+
+    public function setDateArrivee(\DateTimeInterface $dateArrivee): static
+    {
+        $this->dateArrivee = $dateArrivee;
 
         return $this;
     }
